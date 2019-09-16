@@ -1,0 +1,67 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/scott?useSSL=false&characterEncoding=utf8&serverTimezone=UTC&useUnicode=true
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: HikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  thymeleaf:
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.entity
+logging:
+  level:
+    root: INFO
+    com.example.mapper:  DEBUG
+#spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/scott?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#    username: root
+#    password: root
+#    druid:
+#      initial-size: 5
+#      min-idle: 5
+#      max-active: 20
+#      max-wait: 60000
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+#      validation-query: SELECT 1 FROM DUAL
+#      test-while-idle: true
+#      test-on-borrow: false
+#      test-on-return: false
+#      pool-prepared-statements: true
+#      max-pool-prepared-statement-per-connection-size: 20
+#      filter:
+#        stat:
+#          slow-sql-millis: 5000
+#      web-stat-filter:
+#        enabled: true
+#        url-pattern: "/*"
+#        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+#      stat-view-servlet:
+#        url-pattern: "/druid/*"
+#        allow: 127.0.0.1
+#        deny: 192.168.1.73
+#        reset-enable: false
+#        login-username: admin
+#        login-password: 123456
+#      connection-properties: druid.stat.mergeSql\=true
